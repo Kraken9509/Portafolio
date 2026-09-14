@@ -96,7 +96,6 @@
     '.timeline__item': 'right',
     '.edu__col:first-child .edu__card': 'left',
     '.edu__col:last-child .edu__card': 'right',
-    '.copnia': 'scale',
     '.skills__group': 'scale',
     '.form': 'right'
   };
@@ -293,7 +292,7 @@
   if (finePointer) {
 
     // Spotlight dentro de tarjetas
-    $$('.tier, .service, .card, .edu__card, .skills__group, .step, .contact__item, .faq__item, .copnia, .stat, .highlights li').forEach(function (el) {
+    $$('.tier, .service, .card, .edu__card, .skills__group, .step, .contact__item, .faq__item, .stat, .highlights li').forEach(function (el) {
       el.classList.add('spot');
       el.addEventListener('pointermove', function (e) {
         var r = el.getBoundingClientRect();

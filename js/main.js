@@ -247,7 +247,7 @@
             var force = (1 - md / mouseDist);
             p.x += (mx / md) * force * 1.2;
             p.y += (my / md) * force * 1.2;
-            ctx.strokeStyle = 'rgba(255, 178, 63,' + (0.45 * force).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(212, 175, 106,' + (0.45 * force).toFixed(3) + ')';
             ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
           }
@@ -258,13 +258,13 @@
           var dx = p.x - q.x, dy = p.y - q.y;
           var d = Math.sqrt(dx * dx + dy * dy);
           if (d < maxDist) {
-            ctx.strokeStyle = 'rgba(77, 124, 255,' + (0.28 * (1 - d / maxDist)).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(59, 130, 246,' + (0.28 * (1 - d / maxDist)).toFixed(3) + ')';
             ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
           }
         }
 
-        ctx.fillStyle = 'rgba(0, 224, 255, 0.8)';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.6)';
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
       }
       if (!reduceMotion) requestAnimationFrame(draw);

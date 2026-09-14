@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#00e0ff"/>
-      <stop offset=".55" stop-color="#4d7cff"/>
-      <stop offset="1" stop-color="#8b5cff"/>
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset=".55" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#6366f1"/>
     </linearGradient>
     <linearGradient id="w" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffc24d"/>
-      <stop offset="1" stop-color="#ff6b3d"/>
+      <stop offset="0" stop-color="#e2c48a"/>
+      <stop offset="1" stop-color="#b8923f"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#05070e"/>
+  <rect width="64" height="64" rx="14" fill="#0a0f1c"/>
   <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="url(#g)" stroke-width="3"/>
   <text x="32" y="41" text-anchor="middle" font-family="Consolas, monospace" font-weight="700" font-size="24" fill="url(#g)">OC</text>
   <rect x="18" y="47" width="28" height="3" rx="1.5" fill="url(#w)"/>

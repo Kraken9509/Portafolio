@@ -10,7 +10,7 @@
   <meta name="author" content="Omar Camilo Santiago García">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://portafolio-omar-santiago.vercel.app/">
-  <meta name="theme-color" content="#0b6e63">
+  <meta name="theme-color" content="#0b1716">
 
   <meta name="geo.region" content="CO-MET">
   <meta name="geo.placename" content="Villavicencio, Meta, Colombia">
@@ -95,6 +95,22 @@
 </head>
 <body>
 
+<!-- Iconografía propia -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-lento"><circle cx="12" cy="12" r="8"/><path d="M12 7.5v5l3 2"/></g>
+    <g id="i-enciende"><path d="M12 4v8"/><path d="M6.8 7.2a7 7 0 1 0 10.4 0"/></g>
+    <g id="i-virus"><path d="M12 3.5l7 3v5c0 4-3 7.4-7 9-4-1.6-7-5-7-9v-5z"/><path d="M9.5 11.5l5 4M14.5 11.5l-5 4"/></g>
+    <g id="i-internet"><path d="M3.5 9a13 13 0 0 1 17 0"/><path d="M6.8 12.4a8.4 8.4 0 0 1 10.4 0"/><path d="M10 15.8a3.4 3.4 0 0 1 4 0"/><circle cx="12" cy="19" r=".9" fill="currentColor"/></g>
+    <g id="i-impresora"><path d="M7 9V4h10v5"/><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M7 14h10v6H7z"/></g>
+    <g id="i-clave"><circle cx="8.5" cy="12" r="3.5"/><path d="M12 12h8M17 12v3.5M20 12v2.5"/></g>
+    <g id="i-archivos"><path d="M4.5 19V6a1 1 0 0 1 1-1h4l2 2.5h7a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1h-13a1 1 0 0 1-1-1z"/><path d="M9.5 13.5h5"/></g>
+    <g id="i-pantallazo"><path d="M13 3.5L6.5 13h5l-1 7.5L17 11h-5z"/></g>
+    <g id="i-limpieza"><path d="M9 14.5l-4 4 2.5 2.5 4-4"/><path d="M11.5 17l5.5-5.5a3.5 3.5 0 0 0 0-5l-1-1a3.5 3.5 0 0 0-5 0L5.5 11"/></g>
+    <g id="i-otro"><path d="M20 15a2.5 2.5 0 0 1-2.5 2.5H9L4.5 21V6A2.5 2.5 0 0 1 7 3.5h10.5A2.5 2.5 0 0 1 20 6z"/><path d="M10 9a2.3 2.3 0 1 1 3.1 2.2c-.7.3-1.1.9-1.1 1.6"/><circle cx="12" cy="15.2" r=".85" fill="currentColor"/></g>
+  </defs>
+</svg>
+
 <a class="skip" href="#inicio">Saltar al contenido</a>
 
 <header class="masthead">
@@ -117,64 +133,115 @@
 
 <main id="inicio">
 
-  <!-- ============ Triaje: el corazón de la página ============ -->
-  <section class="triage">
-    <div class="wrap triage__in">
+  <!-- ============ La mesa de trabajo ============ -->
+  <section class="bench">
+    <div class="wrap bench__in">
 
-      <div class="triage__ask">
+      <div class="bench__ask">
         <p class="status"><span class="status__dot" aria-hidden="true"></span>Atiendo en Villavicencio y de forma remota</p>
 
         <h1>¿Qué le pasa a tu equipo?</h1>
 
         <p class="lede">
-          Elige lo que más se parece a tu caso. Te digo de entrada qué suele ser,
+          Elige lo que más se parece a tu caso. Te muestro dónde suele estar la falla,
           qué hay que revisar y cuánto se demora, antes de que gastes un peso.
         </p>
 
         <ul class="symptoms" id="symptoms">
-          <li><button type="button" class="symptom" data-key="lento">Va muy lento</button></li>
-          <li><button type="button" class="symptom" data-key="enciende">No enciende</button></li>
-          <li><button type="button" class="symptom" data-key="virus">Tiene virus o anuncios</button></li>
-          <li><button type="button" class="symptom" data-key="internet">No conecta a internet</button></li>
-          <li><button type="button" class="symptom" data-key="impresora">La impresora falla</button></li>
-          <li><button type="button" class="symptom" data-key="clave">No entro a mi cuenta o correo</button></li>
-          <li><button type="button" class="symptom" data-key="archivos">Perdí archivos</button></li>
-          <li><button type="button" class="symptom" data-key="pantallazo">Se apaga o se reinicia solo</button></li>
-          <li><button type="button" class="symptom" data-key="limpieza">Quiero mantenimiento preventivo</button></li>
-          <li><button type="button" class="symptom" data-key="otro">Es otra cosa</button></li>
+          <li><button type="button" class="symptom" data-key="lento"><svg class="ic" aria-hidden="true"><use href="#i-lento"/></svg>Va muy lento</button></li>
+          <li><button type="button" class="symptom" data-key="enciende"><svg class="ic" aria-hidden="true"><use href="#i-enciende"/></svg>No enciende</button></li>
+          <li><button type="button" class="symptom" data-key="virus"><svg class="ic" aria-hidden="true"><use href="#i-virus"/></svg>Tiene virus o anuncios</button></li>
+          <li><button type="button" class="symptom" data-key="internet"><svg class="ic" aria-hidden="true"><use href="#i-internet"/></svg>No conecta a internet</button></li>
+          <li><button type="button" class="symptom" data-key="impresora"><svg class="ic" aria-hidden="true"><use href="#i-impresora"/></svg>La impresora falla</button></li>
+          <li><button type="button" class="symptom" data-key="clave"><svg class="ic" aria-hidden="true"><use href="#i-clave"/></svg>No entro a mi cuenta</button></li>
+          <li><button type="button" class="symptom" data-key="archivos"><svg class="ic" aria-hidden="true"><use href="#i-archivos"/></svg>Perdí archivos</button></li>
+          <li><button type="button" class="symptom" data-key="pantallazo"><svg class="ic" aria-hidden="true"><use href="#i-pantallazo"/></svg>Se apaga solo</button></li>
+          <li><button type="button" class="symptom" data-key="limpieza"><svg class="ic" aria-hidden="true"><use href="#i-limpieza"/></svg>Quiero mantenimiento</button></li>
+          <li><button type="button" class="symptom" data-key="otro"><svg class="ic" aria-hidden="true"><use href="#i-otro"/></svg>Es otra cosa</button></li>
         </ul>
       </div>
 
-      <!-- Ficha de diagnóstico -->
-      <aside class="sheet" id="sheet" aria-live="polite">
-        <div class="sheet__empty" id="sheetEmpty">
-          <h2>Diagnóstico inicial</h2>
-          <p>Elige un síntoma y aquí aparece qué suele ser, qué reviso y cómo seguimos.</p>
-          <dl class="sheet__meta">
-            <dt>Dónde</dt><dd>Villavicencio y alrededores, o remoto en Colombia</dd>
-            <dt>Quién atiende</dt><dd>Omar Camilo Santiago, ingeniero de sistemas</dd>
-            <dt>Teléfonos</dt>
-            <dd><a href="tel:+573203814443">320 381 4443</a> y <a href="tel:+573108518054">310 851 8054</a></dd>
-          </dl>
-        </div>
+      <!-- Dibujo del equipo abierto + ficha de diagnóstico -->
+      <div class="bench__rig">
 
-        <div class="sheet__card" id="sheetCard" hidden>
-          <p class="sheet__kicker" id="sheetLevel"></p>
-          <h2 id="sheetTitle"></h2>
-          <p class="sheet__what" id="sheetWhat"></p>
+        <figure class="rig" id="rig">
+          <svg viewBox="0 0 420 300" role="img" aria-labelledby="rigTitle">
+            <title id="rigTitle">Vista interna de un portátil con sus componentes señalados</title>
+
+            <!-- chasis -->
+            <rect class="rig__case" x="22" y="18" width="376" height="264" rx="14"/>
+            <rect class="rig__bay"  x="40" y="36" width="340" height="228" rx="8"/>
+
+            <!-- tornillos -->
+            <circle class="rig__screw" cx="34" cy="30" r="3.4"/>
+            <circle class="rig__screw" cx="386" cy="30" r="3.4"/>
+            <circle class="rig__screw" cx="34" cy="270" r="3.4"/>
+            <circle class="rig__screw" cx="386" cy="270" r="3.4"/>
+
+            <!-- ventilador + disipador -->
+            <g class="part" data-part="fan">
+              <rect class="part__box" x="54" y="50" width="104" height="94" rx="7"/>
+              <circle class="part__ring" cx="106" cy="97" r="33"/>
+              <circle class="part__hub" cx="106" cy="97" r="7"/>
+              <path class="part__blade" d="M106 97l24-16M106 97l6 28M106 97l-27-11M106 97l13-25M106 97l-15 25"/>
+              <path class="part__pipe" d="M139 97h44a9 9 0 0 1 9 9v22"/>
+              <text class="part__tag" x="106" y="160">Ventilador</text>
+            </g>
+
+            <!-- memoria RAM -->
+            <g class="part" data-part="ram">
+              <rect class="part__box" x="186" y="50" width="152" height="24" rx="4"/>
+              <path class="part__pins" d="M196 74v5M212 74v5M228 74v5M244 74v5M260 74v5M276 74v5M292 74v5M308 74v5M324 74v5"/>
+              <rect class="part__box" x="186" y="88" width="152" height="24" rx="4"/>
+              <path class="part__pins" d="M196 112v5M212 112v5M228 112v5M244 112v5M260 112v5M276 112v5M292 112v5M308 112v5M324 112v5"/>
+              <text class="part__tag" x="262" y="134">Memoria</text>
+            </g>
+
+            <!-- disco -->
+            <g class="part" data-part="disk">
+              <rect class="part__box" x="212" y="150" width="126" height="46" rx="5"/>
+              <path class="part__pins" d="M222 150v46M338 173h10"/>
+              <circle class="part__dot" cx="275" cy="173" r="11"/>
+              <circle class="part__dot2" cx="275" cy="173" r="3.4"/>
+              <text class="part__tag" x="275" y="212">Disco</text>
+            </g>
+
+            <!-- batería -->
+            <g class="part" data-part="bat">
+              <rect class="part__box" x="54" y="196" width="140" height="56" rx="6"/>
+              <path class="part__cells" d="M100 196v56M146 196v56"/>
+              <path class="part__lead" d="M194 224h16"/>
+              <text class="part__tag" x="124" y="268">Batería</text>
+            </g>
+
+            <!-- tarjeta wifi -->
+            <g class="part" data-part="wifi">
+              <rect class="part__box" x="226" y="226" width="58" height="26" rx="4"/>
+              <path class="part__ant" d="M284 239h30M300 239l14-14M300 239l14 14"/>
+              <text class="part__tag" x="255" y="268">Wifi</text>
+            </g>
+          </svg>
+
+          <figcaption id="rigNote">Así se ve tu equipo por dentro. Elige un síntoma y te señalo la pieza.</figcaption>
+        </figure>
+
+        <aside class="ticket" id="ticket" aria-live="polite" hidden>
+          <p class="ticket__level" id="ticketLevel"></p>
+          <h2 id="ticketTitle"></h2>
+          <p class="ticket__what" id="ticketWhat"></p>
 
           <h3>Qué reviso</h3>
-          <ul id="sheetChecks"></ul>
+          <ul id="ticketChecks"></ul>
 
-          <p class="sheet__time" id="sheetTime"></p>
+          <p class="ticket__time" id="ticketTime"></p>
 
-          <div class="sheet__go">
-            <a class="btn btn--solid" id="sheetWa" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-            <a class="btn btn--line" href="tel:+573203814443">Llamar ahora</a>
+          <div class="ticket__go">
+            <a class="btn btn--solid" id="ticketWa" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            <a class="btn btn--ghost" href="tel:+573203814443">Llamar ahora</a>
           </div>
-          <p class="sheet__note">El mensaje va escrito. Solo lo envías.</p>
-        </div>
-      </aside>
+          <p class="ticket__note">El mensaje va escrito. Solo lo envías.</p>
+        </aside>
+      </div>
 
     </div>
   </section>
@@ -189,6 +256,12 @@
 
       <div class="levels">
         <article class="level">
+          <svg class="spot" viewBox="0 0 120 84" aria-hidden="true">
+            <rect class="spot__ln" x="12" y="10" width="96" height="60" rx="5"/>
+            <path class="spot__ln" d="M48 70v6h24v-6M36 76h48"/>
+            <path class="spot__ln" d="M26 26h40M26 36h54M26 46h30"/>
+            <path class="spot__hi" d="M74 46l7 7 15-15"/>
+          </svg>
           <p class="level__tag">Nivel 1</p>
           <h3>Se resuelve desde el sistema</h3>
           <p class="level__for">Lo que no exige abrir el equipo. Muchas veces se hace remoto el mismo día.</p>
@@ -203,6 +276,13 @@
         </article>
 
         <article class="level level--deep">
+          <svg class="spot" viewBox="0 0 120 84" aria-hidden="true">
+            <rect class="spot__ln" x="10" y="16" width="76" height="56" rx="5"/>
+            <rect class="spot__ln" x="22" y="28" width="24" height="18" rx="2"/>
+            <path class="spot__ln" d="M56 28h20M56 36h20M56 44h12"/>
+            <path class="spot__ln" d="M22 56h52"/>
+            <path class="spot__hi" d="M84 46l18-18M98 24l8 8-6 6-8-8z"/>
+          </svg>
           <p class="level__tag">Nivel 2</p>
           <h3>Hay que entrar al equipo</h3>
           <p class="level__for">Cuando la falla está en el hardware, en el sistema o en la información.</p>

@@ -191,20 +191,124 @@
   }
 
   /* =========================================================
-     Los dibujos de nivel 1 y nivel 2 se trazan al verlos.
-     Sin JS o con movimiento reducido quedan ya dibujados.
+     Entradas al desplazarse.
+
+     Se usa la posición real de cada elemento en vez de
+     IntersectionObserver: si el observador no llega a dispararse,
+     el contenido se quedaría invisible. Esto no puede fallar en
+     silencio, y además revela de entrada lo que ya está en pantalla.
      ========================================================= */
-  var spots = Array.prototype.slice.call(document.querySelectorAll('.spot'));
-  if (spots.length && !quieto && 'IntersectionObserver' in window) {
-    spots.forEach(function (sp) { sp.classList.add('spot--anim'); });
-    var ver = new IntersectionObserver(function (filas) {
-      filas.forEach(function (f) {
-        if (!f.isIntersecting) return;
-        f.target.classList.add('is-in');
-        ver.unobserve(f.target);
+  var ENTRADAS = [
+    ['.head', 'rise'],
+    ['.level', 'wipe'],
+    ['.levels__note', 'rise'],
+    ['.level .list li', 'rise'],
+    ['.profile__text p', 'rise'],
+    ['.facts > div', 'rise'],
+    ['.track > li', 'row'],
+    ['.courses li', 'rise'],
+    ['.faq details', 'rise'],
+    ['.channels li', 'rise'],
+    ['.form .field', 'rise'],
+    ['.form > button', 'rise'],
+    ['.foot__in > *', 'rise']
+  ];
+
+  if (!quieto) {
+    document.documentElement.classList.add('anim');
+
+    /* las píldoras del inicio entran al cargar: solo las numeramos */
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.symptoms li'),
+      function (li, i) { li.style.setProperty('--i', i); }
+    );
+
+    /* pendientes: cada uno con la clase que lo revela */
+    var pendientes = [];
+    var porGrupo = new Map();
+
+    ENTRADAS.forEach(function (par) {
+      Array.prototype.forEach.call(document.querySelectorAll(par[0]), function (el) {
+        if (el.hasAttribute('data-rev')) return;
+        el.setAttribute('data-rev', par[1]);
+        var padre = el.parentElement;
+        var n = porGrupo.get(padre) || 0;
+        el.style.setProperty('--i', Math.min(n, 7));
+        porGrupo.set(padre, n + 1);
+        pendientes.push({ el: el, cls: 'in' });
       });
-    }, { threshold: .4 });
-    spots.forEach(function (sp) { ver.observe(sp); });
+    });
+
+    /* los dibujos de nivel 1 y nivel 2 se trazan al verlos */
+    Array.prototype.forEach.call(document.querySelectorAll('.spot'), function (sp) {
+      sp.classList.add('spot--anim');
+      pendientes.push({ el: sp, cls: 'is-in' });
+    });
+
+    function revisar() {
+      var alto = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = pendientes.length - 1; i >= 0; i--) {
+        var r = pendientes[i].el.getBoundingClientRect();
+        /* Basta con que el elemento haya llegado al borde inferior:
+           lo que ya quedó por encima también se revela, para que un
+           salto con el menú o con la tecla Fin no deje huecos
+           invisibles al volver a subir. */
+        if (r.top < alto - 40) {
+          pendientes[i].el.classList.add(pendientes[i].cls);
+          pendientes.splice(i, 1);
+        }
+      }
+      if (!pendientes.length) {
+        window.removeEventListener('scroll', pedir);
+        window.removeEventListener('resize', pedir);
+      }
+    }
+
+    /* Limitado por reloj, no por requestAnimationFrame: si el
+       navegador no está componiendo fotogramas, rAF puede no
+       llegar a ejecutarse y el contenido se quedaría oculto.
+       La llamada final garantiza que se revisa la posición
+       en la que el visitante se detuvo. */
+    var ultimaRevision = 0;
+    var revisionTardia = null;
+
+    function pedir() {
+      var ahora = Date.now();
+      clearTimeout(revisionTardia);
+      if (ahora - ultimaRevision > 90) {
+        ultimaRevision = ahora;
+        revisar();
+      }
+      revisionTardia = setTimeout(function () {
+        ultimaRevision = Date.now();
+        revisar();
+      }, 110);
+    }
+
+    window.addEventListener('scroll', pedir, { passive: true });
+    window.addEventListener('resize', pedir);
+    revisar();
+
+    /* red de seguridad: si algo quedara pendiente por cualquier
+       motivo, a los 4 segundos se muestra igual */
+    setTimeout(function () {
+      pendientes.forEach(function (x) { x.el.classList.add(x.cls); });
+      pendientes.length = 0;
+    }, 4000);
+  }
+
+  /* =========================================================
+     La cabecera se compacta al bajar
+     ========================================================= */
+  var cabecera = document.querySelector('.masthead');
+  if (cabecera) {
+    var ultimoCab = 0;
+    window.addEventListener('scroll', function () {
+      var ahora = Date.now();
+      if (ahora - ultimoCab < 80) return;
+      ultimoCab = ahora;
+      cabecera.classList.toggle('is-small', window.scrollY > 90);
+    }, { passive: true });
   }
 
   /* =========================================================

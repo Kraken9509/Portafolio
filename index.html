@@ -42,7 +42,7 @@
         "@id": "https://portafolio-omar-santiago.vercel.app/#persona",
         "name": "Omar Camilo Santiago García",
         "jobTitle": ["Ingeniero de Sistemas", "Técnico de soporte nivel 1 y nivel 2", "Especialista en Seguridad Informática", "Docente universitario"],
-        "email": "mailto:camilosantiago17@hotmail.com",
+        "email": ["mailto:compulapvillavicencio@gmail.com", "mailto:camilosantiago17@hotmail.com"],
         "telephone": ["+57 320 381 4443", "+57 310 851 8054"],
         "url": "https://portafolio-omar-santiago.vercel.app/",
         "sameAs": ["https://www.linkedin.com/in/omarcamilosantiagogarcia"],
@@ -59,7 +59,7 @@
         "description": "Soporte técnico nivel 1 y nivel 2 para hogares, pymes e instituciones: mantenimiento de computadores, eliminación de virus, instalación de sistemas operativos, redes, impresoras y recuperación de archivos.",
         "provider": { "@id": "https://portafolio-omar-santiago.vercel.app/#persona" },
         "telephone": ["+57 320 381 4443", "+57 310 851 8054"],
-        "email": "camilosantiago17@hotmail.com",
+        "email": ["compulapvillavicencio@gmail.com", "camilosantiago17@hotmail.com"],
         "areaServed": [
           { "@type": "City", "name": "Villavicencio" },
           { "@type": "AdministrativeArea", "name": "Meta" },
@@ -165,12 +165,13 @@
       <div class="bench__rig">
 
         <figure class="rig" id="rig">
+          <span class="rig__scan" aria-hidden="true"></span>
           <svg viewBox="0 0 420 300" role="img" aria-labelledby="rigTitle">
             <title id="rigTitle">Vista interna de un portátil con sus componentes señalados</title>
 
             <!-- chasis -->
-            <rect class="rig__case" x="22" y="18" width="376" height="264" rx="14"/>
-            <rect class="rig__bay"  x="40" y="36" width="340" height="228" rx="8"/>
+            <rect class="rig__case" pathLength="1" x="22" y="18" width="376" height="264" rx="14"/>
+            <rect class="rig__bay" pathLength="1" x="40" y="36" width="340" height="228" rx="8"/>
 
             <!-- tornillos -->
             <circle class="rig__screw" cx="34" cy="30" r="3.4"/>
@@ -180,7 +181,7 @@
 
             <!-- ventilador + disipador -->
             <g class="part" data-part="fan">
-              <rect class="part__box" x="54" y="50" width="104" height="94" rx="7"/>
+              <rect class="part__box" pathLength="1" x="54" y="50" width="104" height="94" rx="7"/>
               <circle class="part__ring" cx="106" cy="97" r="33"/>
               <circle class="part__hub" cx="106" cy="97" r="7"/>
               <path class="part__blade" d="M106 97l24-16M106 97l6 28M106 97l-27-11M106 97l13-25M106 97l-15 25"/>
@@ -190,16 +191,16 @@
 
             <!-- memoria RAM -->
             <g class="part" data-part="ram">
-              <rect class="part__box" x="186" y="50" width="152" height="24" rx="4"/>
+              <rect class="part__box" pathLength="1" x="186" y="50" width="152" height="24" rx="4"/>
               <path class="part__pins" d="M196 74v5M212 74v5M228 74v5M244 74v5M260 74v5M276 74v5M292 74v5M308 74v5M324 74v5"/>
-              <rect class="part__box" x="186" y="88" width="152" height="24" rx="4"/>
+              <rect class="part__box" pathLength="1" x="186" y="88" width="152" height="24" rx="4"/>
               <path class="part__pins" d="M196 112v5M212 112v5M228 112v5M244 112v5M260 112v5M276 112v5M292 112v5M308 112v5M324 112v5"/>
               <text class="part__tag" x="262" y="134">Memoria</text>
             </g>
 
             <!-- disco -->
             <g class="part" data-part="disk">
-              <rect class="part__box" x="212" y="150" width="126" height="46" rx="5"/>
+              <rect class="part__box" pathLength="1" x="212" y="150" width="126" height="46" rx="5"/>
               <path class="part__pins" d="M222 150v46M338 173h10"/>
               <circle class="part__dot" cx="275" cy="173" r="11"/>
               <circle class="part__dot2" cx="275" cy="173" r="3.4"/>
@@ -208,7 +209,7 @@
 
             <!-- batería -->
             <g class="part" data-part="bat">
-              <rect class="part__box" x="54" y="196" width="140" height="56" rx="6"/>
+              <rect class="part__box" pathLength="1" x="54" y="196" width="140" height="56" rx="6"/>
               <path class="part__cells" d="M100 196v56M146 196v56"/>
               <path class="part__lead" d="M194 224h16"/>
               <text class="part__tag" x="124" y="268">Batería</text>
@@ -216,13 +217,13 @@
 
             <!-- tarjeta wifi -->
             <g class="part" data-part="wifi">
-              <rect class="part__box" x="226" y="226" width="58" height="26" rx="4"/>
+              <rect class="part__box" pathLength="1" x="226" y="226" width="58" height="26" rx="4"/>
               <path class="part__ant" d="M284 239h30M300 239l14-14M300 239l14 14"/>
               <text class="part__tag" x="255" y="268">Wifi</text>
             </g>
           </svg>
 
-          <figcaption id="rigNote">Así se ve tu equipo por dentro. Elige un síntoma y te señalo la pieza.</figcaption>
+          <figcaption id="rigNote" class="rig__note">Así se ve tu equipo por dentro. Elige un síntoma y te señalo la pieza.</figcaption>
         </figure>
 
         <aside class="ticket" id="ticket" aria-live="polite" hidden>
@@ -257,10 +258,10 @@
       <div class="levels">
         <article class="level">
           <svg class="spot" viewBox="0 0 120 84" aria-hidden="true">
-            <rect class="spot__ln" x="12" y="10" width="96" height="60" rx="5"/>
-            <path class="spot__ln" d="M48 70v6h24v-6M36 76h48"/>
-            <path class="spot__ln" d="M26 26h40M26 36h54M26 46h30"/>
-            <path class="spot__hi" d="M74 46l7 7 15-15"/>
+            <rect class="spot__ln" pathLength="1" x="12" y="10" width="96" height="60" rx="5"/>
+            <path class="spot__ln" pathLength="1" d="M48 70v6h24v-6M36 76h48"/>
+            <path class="spot__ln" pathLength="1" d="M26 26h40M26 36h54M26 46h30"/>
+            <path class="spot__hi" pathLength="1" d="M74 46l7 7 15-15"/>
           </svg>
           <p class="level__tag">Nivel 1</p>
           <h3>Se resuelve desde el sistema</h3>
@@ -277,11 +278,11 @@
 
         <article class="level level--deep">
           <svg class="spot" viewBox="0 0 120 84" aria-hidden="true">
-            <rect class="spot__ln" x="10" y="16" width="76" height="56" rx="5"/>
-            <rect class="spot__ln" x="22" y="28" width="24" height="18" rx="2"/>
-            <path class="spot__ln" d="M56 28h20M56 36h20M56 44h12"/>
-            <path class="spot__ln" d="M22 56h52"/>
-            <path class="spot__hi" d="M84 46l18-18M98 24l8 8-6 6-8-8z"/>
+            <rect class="spot__ln" pathLength="1" x="10" y="16" width="76" height="56" rx="5"/>
+            <rect class="spot__ln" pathLength="1" x="22" y="28" width="24" height="18" rx="2"/>
+            <path class="spot__ln" pathLength="1" d="M56 28h20M56 36h20M56 44h12"/>
+            <path class="spot__ln" pathLength="1" d="M22 56h52"/>
+            <path class="spot__hi" pathLength="1" d="M84 46l18-18M98 24l8 8-6 6-8-8z"/>
           </svg>
           <p class="level__tag">Nivel 2</p>
           <h3>Hay que entrar al equipo</h3>
@@ -473,8 +474,14 @@
             </a>
           </li>
           <li>
-            <a href="mailto:camilosantiago17@hotmail.com">
+            <a href="mailto:compulapvillavicencio@gmail.com">
               <span class="channels__label">Correo</span>
+              <span class="channels__value">compulapvillavicencio@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:camilosantiago17@hotmail.com">
+              <span class="channels__label">Correo alterno</span>
               <span class="channels__value">camilosantiago17@hotmail.com</span>
             </a>
           </li>
@@ -545,6 +552,7 @@
     <p class="foot__lines">
       <a href="tel:+573203814443">320 381 4443</a>
       <a href="tel:+573108518054">310 851 8054</a>
+      <a href="mailto:compulapvillavicencio@gmail.com">compulapvillavicencio@gmail.com</a>
       <a href="mailto:camilosantiago17@hotmail.com">camilosantiago17@hotmail.com</a>
     </p>
     <p class="foot__fine">© <span id="year">2026</span> Omar Camilo Santiago García. Referencias laborales a solicitud.</p>

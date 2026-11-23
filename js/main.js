@@ -3,6 +3,7 @@
 
   var WA_MAIN = '573203814443';
   var $ = function (s) { return document.querySelector(s); };
+  var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -141,7 +142,19 @@
       });
       if (data.part) rig.setAttribute('data-hot', data.part);
       else rig.removeAttribute('data-hot');
+
       rigNote.textContent = data.note;
+
+      if (!quieto) {
+        /* barrido de diagnostico sobre el dibujo */
+        rig.removeAttribute('data-scan');
+        void rig.offsetWidth;
+        rig.setAttribute('data-scan', '');
+
+        rigNote.classList.remove('is-new');
+        void rigNote.offsetWidth;
+        rigNote.classList.add('is-new');
+      }
 
       /* llenar la ficha */
       document.getElementById('ticketLevel').textContent = data.level;
@@ -175,6 +188,23 @@
         rig.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+  }
+
+  /* =========================================================
+     Los dibujos de nivel 1 y nivel 2 se trazan al verlos.
+     Sin JS o con movimiento reducido quedan ya dibujados.
+     ========================================================= */
+  var spots = Array.prototype.slice.call(document.querySelectorAll('.spot'));
+  if (spots.length && !quieto && 'IntersectionObserver' in window) {
+    spots.forEach(function (sp) { sp.classList.add('spot--anim'); });
+    var ver = new IntersectionObserver(function (filas) {
+      filas.forEach(function (f) {
+        if (!f.isIntersecting) return;
+        f.target.classList.add('is-in');
+        ver.unobserve(f.target);
+      });
+    }, { threshold: .4 });
+    spots.forEach(function (sp) { ver.observe(sp); });
   }
 
   /* =========================================================

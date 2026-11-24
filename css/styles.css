@@ -336,12 +336,12 @@ strong { font-weight: 600; }
   font-family: var(--prose); font-size: 1rem; line-height: 1.65;
   color: var(--ink-soft); margin-bottom: 0;
 }
-.ticket ul { font-size: .94rem; }
-.ticket ul li {
+#ticketChecks { font-size: .94rem; }
+#ticketChecks li {
   position: relative; padding: .44rem 0 .44rem 1.25rem;
   border-top: 1px solid var(--rule);
 }
-.ticket ul li::before {
+#ticketChecks li::before {
   content: ""; position: absolute; left: .125rem; top: 1rem;
   width: .44rem; height: .44rem; background: var(--teal-pale); border: 1px solid var(--teal);
 }
@@ -663,3 +663,40 @@ strong { font-weight: 600; }
   .anim .list li[data-rev]::before { width: .625rem !important; }
   .anim .track > li[data-rev]::after { display: none; }
 }
+
+/* ===========================================================
+   Lo que el cliente puede esperar, justo antes de escribir
+   =========================================================== */
+.promise {
+  margin: 1.125rem 0 1.25rem;
+  padding: .875rem 1rem;
+  background: var(--teal-pale);
+  border-left: 3px solid var(--teal);
+}
+.promise li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: .89rem;
+  line-height: 1.45;
+  color: var(--teal-deep);
+}
+.promise li + li { margin-top: .5rem; }
+.promise li::before {
+  content: ""; position: absolute; left: .1rem; top: .3rem;
+  width: .9rem; height: .48rem;
+  background: none;
+  border: 0;
+  border-left: 2px solid var(--teal);
+  border-bottom: 2px solid var(--teal);
+  border-radius: 1px;
+  transform: rotate(-45deg);
+}
+/* el visto se dibuja cuando aparece la ficha */
+.ticket .promise li::before { animation: tick .32s var(--ease) both; }
+.ticket .promise li:nth-child(2)::before { animation-delay: .1s; }
+.ticket .promise li:nth-child(3)::before { animation-delay: .2s; }
+@keyframes tick {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+.form .promise { margin-bottom: 1.375rem; }

@@ -2,6 +2,7 @@
   'use strict';
 
   var WA_MAIN = '573203814443';
+  var SALTO = '\n';   /* salto de línea dentro del mensaje */
   var $ = function (s) { return document.querySelector(s); };
   var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -22,7 +23,7 @@
       what: 'En la mayoría de los casos es el disco mecánico, poca memoria, programas que arrancan solos o polvo que calienta el equipo. Se revisa antes de proponer cualquier compra.',
       checks: ['Estado y salud del disco', 'Memoria disponible frente a lo que usas', 'Programas que arrancan con Windows', 'Temperatura y limpieza interna', 'Malware que consume recursos'],
       time: 'Revisión el mismo día. Si conviene cambiar a disco SSD, te paso el costo antes.',
-      msg: 'mi equipo está muy lento'
+      msg: 'el equipo va muy lento'
     },
     enciende: {
       part: 'bat',
@@ -32,7 +33,7 @@
       what: 'Puede ser el cargador, la batería, la fuente, la memoria o la pantalla. Son fallas distintas con costos muy distintos, así que el diagnóstico va primero.',
       checks: ['Cargador, batería y fuente de poder', 'Señal de encendido en la placa', 'Memoria RAM y conectores', 'Pantalla y salida de video', 'Qué información se puede rescatar del disco'],
       time: 'Diagnóstico presencial. Te digo qué tiene y si vale la pena repararlo.',
-      msg: 'mi equipo no enciende'
+      msg: 'el equipo no enciende'
     },
     virus: {
       part: null,
@@ -42,7 +43,7 @@
       what: 'Normalmente entra por programas descargados de sitios falsos o por extensiones del navegador. Se limpia y se deja el equipo configurado para que no vuelva a pasar.',
       checks: ['Limpieza de malware y adware', 'Extensiones y buscadores del navegador', 'Programas que se instalaron sin permiso', 'Estado del antivirus', 'Contraseñas que puedan estar expuestas'],
       time: 'La mayoría se resuelve en una sesión remota.',
-      msg: 'mi equipo tiene virus o le salen anuncios'
+      msg: 'el equipo tiene virus y le salen anuncios'
     },
     internet: {
       part: 'wifi',
@@ -52,7 +53,7 @@
       what: 'Lo primero es separar si falla solo tu equipo o toda la red. Eso cambia por completo la solución.',
       checks: ['Si falla un equipo o todos', 'Configuración de red del equipo', 'Router, claves y canales de wifi', 'Cobertura en el sitio donde trabajas', 'Cableado si es una oficina'],
       time: 'Si es del equipo, se hace remoto. Si es la red, voy al sitio.',
-      msg: 'mi equipo no se conecta a internet'
+      msg: 'el equipo no se conecta a internet'
     },
     impresora: {
       part: null,
@@ -62,7 +63,7 @@
       what: 'Casi siempre es el controlador, la cola de impresión o la conexión en red. Rara vez es la impresora dañada.',
       checks: ['Controlador y cola de impresión', 'Conexión por cable, wifi o red', 'Compartir la impresora entre varios equipos', 'Estado de tintas o tóner', 'Escaneo si es multifuncional'],
       time: 'Muchas veces se resuelve remoto en poco tiempo.',
-      msg: 'mi impresora no funciona bien'
+      msg: 'la impresora no funciona bien'
     },
     clave: {
       part: null,
@@ -72,7 +73,7 @@
       what: 'Te acompaño en el proceso oficial de recuperación. Nunca necesito que me digas tu contraseña.',
       checks: ['Recuperación por el canal oficial del servicio', 'Correo y teléfono de respaldo', 'Configuración del correo en tu equipo', 'Verificación en dos pasos para que no vuelva a pasar'],
       time: 'Remoto. El tiempo depende del proveedor del correo.',
-      msg: 'no puedo entrar a mi cuenta o a mi correo'
+      msg: 'no puedo entrar a mi cuenta de correo'
     },
     archivos: {
       part: 'disk',
@@ -82,7 +83,7 @@
       what: 'Mientras menos se use el equipo, más se puede recuperar. Si los archivos son importantes, apaga el equipo y escríbeme antes de instalar nada.',
       checks: ['Estado físico del disco', 'Recuperación de archivos borrados', 'Copias ocultas del sistema y la nube', 'Respaldo de lo que se logre rescatar', 'Una rutina de copias para más adelante'],
       time: 'Te digo qué se puede rescatar antes de cobrar el trabajo.',
-      msg: 'perdí archivos importantes'
+      msg: 'perdí archivos importantes y los necesito'
     },
     pantallazo: {
       part: 'fan',
@@ -92,7 +93,7 @@
       what: 'Suele ser calentamiento, fuente de poder, memoria o un controlador dañado. Los reinicios repetidos terminan afectando el disco, así que conviene revisarlo pronto.',
       checks: ['Temperaturas y ventilación', 'Memoria RAM', 'Fuente de poder o batería', 'Registro de errores de Windows', 'Controladores y actualizaciones'],
       time: 'Diagnóstico presencial, normalmente el mismo día.',
-      msg: 'mi equipo se apaga o se reinicia solo'
+      msg: 'el equipo se apaga y se reinicia solo'
     },
     limpieza: {
       part: 'fan',
@@ -102,7 +103,7 @@
       what: 'Limpieza interna, cambio de pasta térmica y puesta a punto del sistema. Es lo que evita la mayoría de las fallas de las que se quejan los demás casos.',
       checks: ['Limpieza interna y de ventiladores', 'Cambio de pasta térmica', 'Puesta a punto de Windows', 'Actualizaciones y antivirus', 'Copia de seguridad de tu información'],
       time: 'Se agenda el día y la hora que te sirvan.',
-      msg: 'quiero mantenimiento preventivo para mi equipo'
+      msg: 'quiero mantenimiento preventivo para el equipo'
     },
     otro: {
       part: null,
@@ -112,7 +113,7 @@
       what: 'Si no está en la lista, descríbelo con tus palabras. Con eso te digo si es algo de nivel 1, de nivel 2 o si no es necesario que pagues por un servicio.',
       checks: ['Qué equipo es', 'Desde cuándo pasa', 'Qué ocurrió justo antes', 'Si ya intentaron algo'],
       time: 'Respondo con un diagnóstico inicial por WhatsApp.',
-      msg: 'tengo un problema con mi equipo'
+      msg: 'tengo un problema que no está en la lista'
     }
   };
 
@@ -171,8 +172,11 @@
       });
 
       document.getElementById('ticketWa').href =
-        'https://wa.me/' + WA_MAIN + '?text=' +
-        encodeURIComponent('Hola Omar, ' + data.msg + '. ¿Me puedes ayudar?');
+        'https://wa.me/' + WA_MAIN + '?text=' + encodeURIComponent(
+          'Hola Omar, te escribo desde tu página web.' + SALTO + SALTO +
+          'Mi caso: ' + data.msg + '.' + SALTO + SALTO +
+          '¿Me puedes dar un diagnóstico y el costo?'
+        );
 
       if (ticket.hidden) {
         ticket.hidden = false;
@@ -339,10 +343,12 @@
       var linea = form.querySelector('input[name="linea"]:checked').value;
 
       var texto =
-        'Hola Omar, soy ' + nombre + '.\n' +
-        'Equipo: ' + form.equipo.value + '\n' +
-        'Atención: ' + modo + '\n\n' +
-        mensaje;
+        'Hola Omar, te escribo desde tu página web.' + SALTO + SALTO +
+        'Nombre: ' + nombre + SALTO +
+        'Equipo: ' + form.equipo.value + SALTO +
+        'Atención: ' + modo + SALTO + SALTO +
+        'Qué está pasando:' + SALTO + mensaje + SALTO + SALTO +
+        '¿Me puedes dar un diagnóstico y el costo?';
 
       window.open('https://wa.me/' + linea + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
     });

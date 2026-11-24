@@ -302,6 +302,44 @@
   }
 
   /* =========================================================
+     El eje de la cronología se llena al bajar
+     ========================================================= */
+  var cronologia = document.querySelector('.track');
+  var nativo = window.CSS && CSS.supports && CSS.supports('animation-timeline', 'view()');
+  if (cronologia && !quieto && !nativo) {
+    var ultimoEje = 0;
+    var ejeTardio = null;
+
+    function avanzarEje() {
+      var r = cronologia.getBoundingClientRect();
+      var alto = window.innerHeight || document.documentElement.clientHeight;
+      var p = (alto * 0.58 - r.top) / r.height;
+      if (p < 0) p = 0;
+      if (p > 1) p = 1;
+      cronologia.style.setProperty('--avance', p.toFixed(3));
+    }
+
+    /* con llamada final, para que la posición en la que el
+       visitante se detiene quede siempre reflejada */
+    function pedirEje() {
+      var ahora = Date.now();
+      clearTimeout(ejeTardio);
+      if (ahora - ultimoEje > 60) {
+        ultimoEje = ahora;
+        avanzarEje();
+      }
+      ejeTardio = setTimeout(function () {
+        ultimoEje = Date.now();
+        avanzarEje();
+      }, 80);
+    }
+
+    window.addEventListener('scroll', pedirEje, { passive: true });
+    window.addEventListener('resize', avanzarEje);
+    avanzarEje();
+  }
+
+  /* =========================================================
      La cabecera se compacta al bajar
      ========================================================= */
   var cabecera = document.querySelector('.masthead');

@@ -118,9 +118,31 @@ strong { font-weight: 600; }
   border-bottom: 1px solid var(--on-ink-line);
 }
 .masthead__in { display: flex; align-items: center; gap: 1.5rem; min-height: 4.625rem; }
-.ident { display: grid; margin-right: auto; }
+/* ---------- La marca ----------
+   Un portatil de perfil cuya silueta es un visto, apoyado
+   en la linea del banco. Se lee igual a 16 px que en grande. */
+.ident { display: flex; align-items: center; gap: .7rem; margin-right: auto; }
+.ident__text { display: grid; }
 .ident__name { font-weight: 700; font-size: 1.02rem; letter-spacing: -.02em; }
 .ident__role { font-size: .78rem; color: var(--on-ink-soft); }
+
+.mark { width: 2.15rem; height: 2.15rem; flex: none; }
+.mark__screen { fill: var(--lift); transition: fill .25s ease; }
+.mark__base {
+  fill: none; stroke: var(--on-ink); stroke-width: 3; stroke-linecap: round;
+  transition: stroke .25s ease;
+}
+.mark__tick {
+  fill: none; stroke: var(--ink-deep); stroke-width: 3;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.ident:hover .mark__screen { fill: #6fd6c3; }
+/* al pasar por encima, el visto se vuelve a trazar */
+.anim .ident:hover .mark__tick { animation: marcaTraza .55s var(--ease); }
+@keyframes marcaTraza {
+  from { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  to   { stroke-dasharray: 1; stroke-dashoffset: 0; }
+}
 
 .menu { display: flex; gap: 1.375rem; font-size: .93rem; }
 .menu a {
@@ -632,6 +654,7 @@ strong { font-weight: 600; }
   .menu { gap: .95rem; }
   .menu a { font-size: .9rem; }
   .ident__role { display: none; }
+  .mark { width: 1.85rem; height: 1.85rem; }
   .bench h1 { font-size: clamp(2.1rem, 9.5vw, 2.9rem); }
   .symptom { font-size: .93rem; padding: .78rem .95rem; gap: .5rem; }
   .bench::before { background-size: 2.2rem 2.2rem; }
